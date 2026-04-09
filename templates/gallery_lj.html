@@ -1,0 +1,326 @@
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LJ GALLERY | Galeries d'Art Internationales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-gray: #f8f8f8;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Animations Hover */
+        .img-hover-zoom {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .img-hover-zoom img {
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .img-hover-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        .nav-item {
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        /* Logo Signature */
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+
+        .logo-sub {
+            font-size: 10px;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            display: block;
+            margin-top: -8px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 5vw, 45px);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Style spécifique Expositions */
+        .expo-card {
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .expo-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Style Bartoux -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-[1600px] mx-auto px-10 h-28 flex justify-between items-center">
+            
+            <nav class="hidden lg:flex space-x-10">
+                <a href="#expositions" class="nav-item">Expositions</a>
+                <a href="#artistes" class="nav-item">Artistes</a>
+                <a href="#histoire" class="nav-item">L'Histoire</a>
+            </nav>
+
+            <a href="/" class="flex flex-col items-center group">
+                <span class="logo-main group-hover:italic transition-all">LJ</span>
+                <span class="logo-sub">Gallery</span>
+            </a>
+
+            <nav class="hidden lg:flex space-x-10 items-center">
+                <a href="#catalogues" class="nav-item">Catalogues</a>
+                <a href="#contact" class="nav-item">Contact</a>
+                <div class="flex space-x-3 ml-4">
+                    <span class="text-xs font-bold cursor-pointer">FR</span>
+                    <span class="text-xs text-gray-300 cursor-pointer hover:text-black transition-colors">EN</span>
+                </div>
+            </nav>
+
+            <button class="lg:hidden">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-28">
+        
+        <!-- Hero Section -->
+        <section class="relative h-[85vh] w-full bg-gray-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=2572&auto=format&fit=crop" 
+                 alt="Galerie d'Art" 
+                 class="w-full h-full object-cover scale-105 transition-transform duration-[10s] hover:scale-100">
+            <div class="absolute inset-0 bg-black/15 flex flex-col items-center justify-center text-white">
+                <h2 class="text-xs uppercase tracking-[0.6em] mb-4">Printemps 2026</h2>
+                <h1 class="text-5xl md:text-8xl font-serif mb-10 text-center px-4 italic">La Matière Révélée</h1>
+                <a href="#expositions" class="border border-white px-12 py-5 uppercase text-[10px] tracking-[0.4em] hover:bg-white hover:text-black transition-all duration-500">
+                    Découvrir l'exposition
+                </a>
+            </div>
+        </section>
+
+        <!-- Section Notre Histoire -->
+        <section id="histoire" class="py-32 px-10 max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-xs uppercase tracking-[0.5em] text-gray-400 mb-8">Notre Vision</h2>
+            <p class="font-serif text-2xl md:text-3xl leading-relaxed italic">
+                "Depuis sa création, LJ Gallery s'efforce de créer un pont entre l'art classique et les expressions contemporaines les plus audacieuses. Nous croyons en un art qui interroge, émeut et dure."
+            </p>
+            <div class="w-20 h-[1px] bg-black mx-auto mt-12"></div>
+        </section>
+
+        <!-- Section Nos Expositions (Nouvelle Section) -->
+        <section id="expositions" class="py-24 bg-gray-50 reveal">
+            <div class="max-w-[1600px] mx-auto px-10">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div>
+                        <h2 class="text-xs uppercase tracking-[0.5em] text-gray-400 mb-4">Agenda Culturel</h2>
+                        <h2 class="text-4xl md:text-5xl font-serif">Nos Expositions</h2>
+                    </div>
+                    <a href="#" class="text-[11px] uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-all">Voir tout l'agenda</a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Expo 1 -->
+                    <div class="expo-card group cursor-pointer aspect-[16/10] reveal">
+                        <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2000&auto=format&fit=crop" alt="Exposition Peinture" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110">
+                        <div class="expo-overlay absolute inset-0 flex flex-col justify-end p-10 text-white">
+                            <p class="text-[10px] uppercase tracking-[0.3em] mb-2 opacity-80">En ce moment — Paris</p>
+                            <h3 class="text-3xl font-serif mb-4">L'Éveil des Sens</h3>
+                            <p class="text-[11px] uppercase tracking-widest border border-white/30 self-start px-6 py-3 group-hover:bg-white group-hover:text-black transition-all">Explorer</p>
+                        </div>
+                    </div>
+
+                    <!-- Expo 2 -->
+                    <div class="expo-card group cursor-pointer aspect-[16/10] reveal" style="transition-delay: 200ms;">
+                        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=2000&auto=format&fit=crop" alt="Exposition Sculpture" class="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110">
+                        <div class="expo-overlay absolute inset-0 flex flex-col justify-end p-10 text-white">
+                            <p class="text-[10px] uppercase tracking-[0.3em] mb-2 opacity-80">À venir — Monaco</p>
+                            <h3 class="text-3xl font-serif mb-4">Formes & Silences</h3>
+                            <p class="text-[11px] uppercase tracking-widest border border-white/30 self-start px-6 py-3 group-hover:bg-white group-hover:text-black transition-all">En savoir plus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Artistes Résidents -->
+        <section id="artistes" class="py-24 px-10 max-w-[1600px] mx-auto">
+            <h2 class="section-title font-serif">Artistes Résidents</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-24">
+                <div class="artist-card group cursor-pointer reveal">
+                    <div class="img-hover-zoom aspect-[4/5] mb-8 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=2000&auto=format&fit=crop" alt="Jean-Christophe V." class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white uppercase text-[10px] tracking-widest border border-white p-4 backdrop-blur-sm">Voir le Portfolio</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif mb-1">Jean-Christophe V.</h3>
+                        <p class="text-[11px] text-gray-400 uppercase tracking-[0.2em]">Peinture & Texture</p>
+                    </div>
+                </div>
+
+                <div class="artist-card group cursor-pointer reveal lg:translate-y-16">
+                    <div class="img-hover-zoom aspect-[4/5] mb-8 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2000&auto=format&fit=crop" alt="Sophie Miller" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white uppercase text-[10px] tracking-widest border border-white p-4 backdrop-blur-sm">Découvrir l'univers</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif mb-1">Sophie Miller</h3>
+                        <p class="text-[11px] text-gray-400 uppercase tracking-[0.2em]">Sculptures Aériennes</p>
+                    </div>
+                </div>
+
+                <div class="artist-card group cursor-pointer reveal">
+                    <div class="img-hover-zoom aspect-[4/5] mb-8 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?q=80&w=2000&auto=format&fit=crop" alt="Marcus Thorne" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="text-white uppercase text-[10px] tracking-widest border border-white p-4 backdrop-blur-sm">Accéder à la Galerie</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif mb-1">Marcus Thorne</h3>
+                        <p class="text-[11px] text-gray-400 uppercase tracking-[0.2em]">Art Digital & Conceptuel</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-32 bg-[#111] text-white text-center px-10 reveal">
+            <h2 class="text-3xl font-serif mb-6 italic">Recevoir nos Invitations Privées</h2>
+            <p class="text-[11px] uppercase tracking-[0.3em] text-gray-500 mb-12 italic">Accès exclusif aux vernissages mondiaux</p>
+            <form class="max-w-xl mx-auto flex flex-col md:flex-row gap-6">
+                <input type="email" placeholder="VOTRE E-MAIL" class="bg-transparent border-b border-gray-700 w-full py-4 text-[10px] outline-none focus:border-white transition-all uppercase tracking-[0.2em] font-light">
+                <button class="bg-white text-black px-12 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-all">S'inscrire</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-white py-24 px-10 border-t border-gray-100">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+                <div class="flex flex-col">
+                    <span class="logo-main mb-1">LJ</span>
+                    <span class="text-[10px] tracking-[0.4em] uppercase mb-10">Gallery</span>
+                    <p class="text-[11px] text-gray-400 leading-loose uppercase tracking-widest">
+                        L'élégance du trait,<br>
+                        La force de l'idée.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest mb-8">Navigation</h4>
+                    <ul class="space-y-4 text-[11px] text-gray-500 uppercase tracking-widest font-light">
+                        <li><a href="#expositions" class="hover:text-black transition-colors">Expositions</a></li>
+                        <li><a href="#artistes" class="hover:text-black transition-colors">Artistes</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Catalogues</a></li>
+                        <li><a href="#histoire" class="hover:text-black transition-colors">L'Histoire</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest mb-8">Relations</h4>
+                    <p class="text-[11px] text-gray-500 uppercase tracking-widest mb-4 font-light italic">contact@ljgallery.com</p>
+                    <p class="text-[11px] text-gray-500 uppercase tracking-widest font-light">+33 (0)1 42 66 12 34</p>
+                </div>
+
+                <div>
+                    <h4 class="text-[11px] font-bold uppercase tracking-widest mb-8">Réseaux</h4>
+                    <div class="flex flex-col space-y-4 text-[11px] text-gray-500 uppercase tracking-widest font-light">
+                        <a href="#" class="hover:text-black transition-colors underline-offset-4 hover:underline">Instagram</a>
+                        <a href="#" class="hover:text-black transition-colors underline-offset-4 hover:underline">LinkedIn</a>
+                        <a href="#" class="hover:text-black transition-colors underline-offset-4 hover:underline">Artsper</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-10 border-t border-gray-50 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-[9px] text-gray-400 uppercase tracking-[0.3em]">© 2026 LJ Gallery International. Tous droits réservés.</p>
+                <div class="flex space-x-8 text-[9px] text-gray-400 uppercase tracking-[0.3em]">
+                    <a href="#" class="hover:text-black transition-colors">Mentions Légales</a>
+                    <a href="#" class="hover:text-black transition-colors">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+    </script>
+</body>
+</html>

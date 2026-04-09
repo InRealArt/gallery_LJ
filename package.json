@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "postinstall": "prisma generate",
     "install:safe:prisma:inrealart": "pnpm exec dotenv -e .env -- pnpm install @InRealArt/prisma-schema",
     "prisma:copy-schema": "cp node_modules/@InRealArt/prisma-schema/schema.prisma prisma/schema.prisma",
     "update:schema:inrealart": "pnpm run install:safe:prisma:inrealart && pnpm run prisma:copy-schema && pnpm exec prisma generate"

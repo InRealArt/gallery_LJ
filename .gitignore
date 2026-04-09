@@ -45,3 +45,6 @@ next-env.d.ts
 
 #AI Files
 .qwen
+
+# Prisma generated files
+src/generated/prisma

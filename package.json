@@ -8,15 +8,16 @@
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
-    "install:safe:prisma:inrealart": "pnpm exec dotenv -e .env -- pnpm install @InRealArt/prisma-schema",
+    "install:safe:prisma:inrealart": "sh -c 'GITHUB_TOKEN=$(grep ^GITHUB_TOKEN= .env | cut -d= -f2) pnpm update @InRealArt/prisma-schema --latest'",
     "prisma:copy-schema": "cp node_modules/@InRealArt/prisma-schema/schema.prisma prisma/schema.prisma",
-    "update:schema:inrealart": "pnpm run install:safe:prisma:inrealart && pnpm run prisma:copy-schema && pnpm exec prisma generate"
+    "update:schema:inrealart": "sh -c 'GITHUB_TOKEN=$(grep ^GITHUB_TOKEN= .env | cut -d= -f2) pnpm update @InRealArt/prisma-schema --latest && cp node_modules/@InRealArt/prisma-schema/schema.prisma prisma/schema.prisma && GITHUB_TOKEN=$(grep ^GITHUB_TOKEN= .env | cut -d= -f2) pnpm exec prisma generate'"
   },
   "dependencies": {
-    "@InRealArt/prisma-schema": "^1.3.3",
+    "@InRealArt/prisma-schema": "^1.3.5",
     "@prisma/adapter-neon": "^7.4.1",
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",
+    "gsap": "^3.14.2",
     "next": "16.2.3",
     "react": "19.2.4",
     "react-dom": "19.2.4"

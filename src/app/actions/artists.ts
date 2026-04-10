@@ -1,11 +1,12 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { CLOUDFLARE_R2_PUBLIC_URL } from "@/constants/cloudflare";
+import { generateSlug } from "@/lib/slug";
 
 export interface ArtistData {
   id: number;
   name: string;
+  slug: string;
   specialty: string | null;
   imageUrl: string;
 }
@@ -39,8 +40,11 @@ export async function getArtists(): Promise<ArtistData[]> {
         (artist): ArtistData => ({
           id: artist.id,
           name: `${artist.firstName || ""} ${artist.lastName || ""}`.trim() || artist.pseudo,
-          specialty: null, // Will be computed from artworks if needed
-          imageUrl: `${CLOUDFLARE_R2_PUBLIC_URL}${artist.imageUrl}`,
+          slug: artist.slug ?? generateSlug(
+            `${artist.firstName || ""} ${artist.lastName || ""}`.trim() || artist.pseudo
+          ),
+          specialty: null,
+          imageUrl: artist.imageUrl ?? "",
         })
       );
   } catch (error) {

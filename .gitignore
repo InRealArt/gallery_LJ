@@ -48,3 +48,6 @@ next-env.d.ts
 
 # Prisma generated files
 src/generated/prisma
+
+# Claude Files
+.claude

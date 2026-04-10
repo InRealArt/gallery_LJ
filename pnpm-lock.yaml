@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@InRealArt/prisma-schema':
-        specifier: ^1.3.3
-        version: 1.3.3
+        specifier: ^1.3.5
+        version: 1.3.5
       '@prisma/adapter-neon':
         specifier: ^7.4.1
         version: 7.7.0
@@ -20,6 +20,9 @@ importers:
       '@prisma/client':
         specifier: ^7.4.1
         version: 7.7.0(prisma@7.7.0(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3)
+      gsap:
+        specifier: ^3.14.2
+        version: 3.14.2
       next:
         specifier: 16.2.3
         version: 16.2.3(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -63,8 +66,8 @@ importers:
 
 packages:
 
-  '@InRealArt/prisma-schema@1.3.3':
-    resolution: {integrity: sha512-5g6TuYGeKNdcUNyERNFp3lBN6EEAMmA3lcpqX2kv8UCCp2zlxgGaYZYB0ePXC0henEBOl+cPjWfFHC2pj0mGCQ==, tarball: https://npm.pkg.github.com/download/@InRealArt/prisma-schema/1.3.3/2cdd56af887c867ebc5cf73ddfedc032544f9a21}
+  '@InRealArt/prisma-schema@1.3.5':
+    resolution: {integrity: sha512-Dt+EtZYFd9POb5jv9BbIm/g4jjHcqOmCd7/zb/c7MuKSFLRs40kpyFmWbYlLY0t9RT5ujFHU4C6NWfpY9lrUxQ==, tarball: https://npm.pkg.github.com/download/@InRealArt/prisma-schema/1.3.5/e9a67631437464e7162f50e779e9b5ef97225bed}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -1497,6 +1500,9 @@ packages:
   graphmatch@1.1.1:
     resolution: {integrity: sha512-5ykVn/EXM1hF0XCaWh05VbYvEiOL2lY1kBxZtaYsyvjp7cmWOU1XsAdfQBwClraEofXDT197lFbXOEVMHpvQOg==}
 
+  gsap@3.14.2:
+    resolution: {integrity: sha512-P8/mMxVLU7o4+55+1TCnQrPmgjPKnwkzkXOK1asnR9Jg2lna4tEY5qBJjMmAaOBDDZWtlRjBXjLa0w53G/uBLA==}
+
   has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}
     engines: {node: '>= 0.4'}
@@ -2449,7 +2455,7 @@ packages:
 
 snapshots:
 
-  '@InRealArt/prisma-schema@1.3.3': {}
+  '@InRealArt/prisma-schema@1.3.5': {}
 
   '@alloc/quick-lru@5.2.0': {}
 
@@ -4001,6 +4007,8 @@ snapshots:
   grammex@3.1.12: {}
 
   graphmatch@1.1.1: {}
+
+  gsap@3.14.2: {}
 
   has-bigints@1.1.0: {}
 

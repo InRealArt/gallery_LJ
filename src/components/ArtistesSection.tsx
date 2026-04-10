@@ -1,6 +1,7 @@
 import RevealWrapper from "./RevealWrapper";
+import { getArtists } from "@/app/actions/artists";
 
-const artistes = [
+const defaultArtistes = [
   {
     name: "Jean-Christophe V.",
     specialty: "Peinture & Texture",
@@ -11,26 +12,39 @@ const artistes = [
   {
     name: "Sophie Miller",
     specialty: "Sculptures Aériennes",
-    cta: "Découvrir l'univers",
+    cta: "Voir le Portfolio",
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2000&auto=format&fit=crop",
   },
   {
     name: "Marcus Thorne",
     specialty: "Art Digital & Conceptuel",
-    cta: "Accéder à la Galerie",
+    cta: "Voir le Portfolio",
     image:
       "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?q=80&w=2000&auto=format&fit=crop",
   },
 ];
 
-export default function ArtistesSection() {
+export default async function ArtistesSection() {
+  const artists = await getArtists();
+
+  const hasArtists = artists.length > 0;
+
+  const displayItems = hasArtists
+    ? artists.map((artist) => ({
+        name: artist.name,
+        specialty: artist.specialty || "Artiste",
+        cta: "Voir le Portfolio",
+        image: artist.imageUrl,
+      }))
+    : defaultArtistes;
+
   return (
     <section id="artistes" className="py-24 px-10 max-w-[1600px] mx-auto">
       <h2 className="section-title font-serif">Artistes Résidents</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-24">
-        {artistes.map((artiste, index) => (
+        {displayItems.map((artiste, index) => (
           <RevealWrapper key={artiste.name} delay={index === 1 ? 200 : 0} yOffset={index === 1 ? 64 : 0}>
             <div className="group cursor-pointer">
               <div className="img-hover-zoom mb-8 shadow-sm" style={{ aspectRatio: '4/5' }}>

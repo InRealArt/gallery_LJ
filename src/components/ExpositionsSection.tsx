@@ -1,6 +1,7 @@
 import RevealWrapper from "./RevealWrapper";
+import { getExhibitions } from "@/app/actions/exhibitions";
 
-const expositions = [
+const defaultExpositions = [
   {
     title: "L'Éveil des Sens",
     location: "En ce moment — Paris",
@@ -17,7 +18,33 @@ const expositions = [
   },
 ];
 
-export default function ExpositionsSection() {
+function getLocationDisplay(location: string | null): string {
+  if (!location) return "Lieu à définir";
+  
+  // Check if location already has a prefix like "En ce moment —" or "À venir —"
+  if (location.includes("—")) return location;
+  
+  // You could add custom logic here to determine the prefix based on dates
+  return location;
+}
+
+export default async function ExpositionsSection() {
+  const exhibitions = await getExhibitions();
+  
+  // Use database exhibitions if available, otherwise fallback to defaults
+  const hasExhibitions = exhibitions.length > 0;
+  
+  const displayItems = hasExhibitions
+    ? exhibitions.map((expo) => ({
+        title: expo.title,
+        location: getLocationDisplay(expo.location),
+        cta: expo.startDate 
+          ? "Réserver" 
+          : "En savoir plus",
+        image: expo.imageUrl || defaultExpositions[0].image,
+      }))
+    : defaultExpositions;
+
   return (
     <section id="expositions" className="py-24 bg-gray-50">
       <div className="max-w-[1600px] mx-auto px-10">
@@ -41,7 +68,7 @@ export default function ExpositionsSection() {
 
         {/* Expo Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {expositions.map((expo, index) => (
+          {displayItems.map((expo, index) => (
             <RevealWrapper key={expo.title} delay={index * 200}>
               <div className="expo-card group cursor-pointer relative" style={{ aspectRatio: '16/10' }}>
                 <img

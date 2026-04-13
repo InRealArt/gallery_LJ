@@ -57,12 +57,12 @@ export default function Header() {
           <a href="#contact" className="nav-item" onClick={(e) => handleSmoothScroll(e, "#contact")}>
             Contact
           </a>
-          <div className="flex space-x-3 ml-4">
+          {/* <div className="flex space-x-3 ml-4">
             <span className="text-xs font-bold cursor-pointer">FR</span>
             <span className="text-xs text-gray-300 cursor-pointer hover:text-black transition-colors">
               EN
             </span>
-          </div>
+          </div> */}
         </nav>
 
         {/* Mobile Menu Button */}

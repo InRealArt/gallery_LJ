@@ -39,7 +39,7 @@ export default async function ArtistesSection() {
         name: artist.name,
         slug: artist.slug,
         specialty: artist.specialty || "Artiste",
-        cta: "Voir le Portfolio",
+        cta: "Voir l'artiste",
         image: `${CLOUDFLARE_R2_PUBLIC_URL}${artist.imageUrl}`,
       }))
     : defaultArtistes;

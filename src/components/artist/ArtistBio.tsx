@@ -133,13 +133,22 @@ export default function ArtistBio({
                       >
                         {row.label}
                       </span>
-                      <span
-                        className="text-foreground/30 group-hover:text-accent text-sm leading-none
-                                   transition-all duration-300 group-hover:translate-x-1 ml-4 shrink-0"
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.25"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                         aria-hidden="true"
+                        className="w-[15px] h-[15px] ml-4 shrink-0 text-foreground/30
+                                   group-hover:text-accent transition-all duration-300
+                                   group-hover:translate-x-1"
                       >
-                        ›
-                      </span>
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="13 6 19 12 13 18" />
+                      </svg>
                     </button>
                   </li>
                 ))}

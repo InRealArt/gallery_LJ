@@ -1,4 +1,4 @@
-import Link from "next/link";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.ljgallery.com";
 
 export default function Footer() {
   return (
@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="space-y-4 text-[11px] text-gray-500 uppercase tracking-widest font-light">
               <li>
                 <a
-                  href="#expositions"
+                  href={`${SITE_URL}/#expositions`}
                   className="hover:text-black transition-colors"
                 >
                   Expositions
@@ -39,20 +39,20 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#artistes"
+                  href={`${SITE_URL}/#artistes`}
                   className="hover:text-black transition-colors"
                 >
                   Artistes
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-black transition-colors">
+                <a href={`${SITE_URL}/catalogues`} className="hover:text-black transition-colors">
                   Catalogues
                 </a>
               </li>
               <li>
                 <a
-                  href="#histoire"
+                  href={`${SITE_URL}/#histoire`}
                   className="hover:text-black transition-colors"
                 >
                   L&apos;Histoire
@@ -127,10 +127,10 @@ export default function Footer() {
             © 2026 LJ Gallery International. Tous droits réservés.
           </p>
           <div className="flex space-x-8 text-[9px] text-gray-400 uppercase tracking-[0.3em]">
-            <a href="#" className="hover:text-black transition-colors">
+            <a href={`${SITE_URL}/mentions-legales`} className="hover:text-black transition-colors">
               Mentions Légales
             </a>
-            <a href="#" className="hover:text-black transition-colors">
+            <a href={`${SITE_URL}/confidentialite`} className="hover:text-black transition-colors">
               Confidentialité
             </a>
           </div>

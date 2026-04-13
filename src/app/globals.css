@@ -90,12 +90,12 @@ body {
 .artist-html-content {
   font-family: var(--font-playfair), serif;
   color: rgba(26, 26, 26, 0.80);
-  line-height: 1.85;
+  line-height: 1.6;
 }
 
 .artist-html-content p {
   font-size: clamp(0.875rem, 1.2vw, 1rem);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .artist-html-content p:last-child {
@@ -106,23 +106,29 @@ body {
 .artist-html-content ol {
   padding-left: 0;
   list-style: none;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .artist-html-content li {
+  position: relative;
   font-family: var(--font-montserrat), sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: rgba(26, 26, 26, 0.75);
-  padding-left: 1rem;
-  border-left: 1px solid rgba(26, 26, 26, 0.10);
-  margin-bottom: 0.5rem;
-  transition: border-color 0.3s ease, color 0.3s ease;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  color: rgba(26, 26, 26, 0.70);
+  padding-left: 1.5rem;
+  margin-bottom: 0.625rem;
 }
 
-.artist-html-content li:hover {
-  border-left-color: #c8a96e;
-  color: #1a1a1a;
+.artist-html-content li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.625rem;
+  height: 1px;
+  background-color: #c8a96e;
+  opacity: 0.8;
 }
 
 .artist-html-content strong,

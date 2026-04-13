@@ -7,6 +7,11 @@ export interface ArtistPortfolioData {
   name: string;
   slug: string;
   bio: string | null;
+  description: string | null;
+  formation: string | null;
+  personalExhibitions: string | null;
+  collectiveExhibitions: string | null;
+  publicCollections: string | null;
   imageUrl: string;
   artworks: Array<{
     id: number;
@@ -36,7 +41,12 @@ export async function getArtistBySlug(slug: string): Promise<ArtistPortfolioData
       id: artist.id,
       name: `${artist.firstName || ""} ${artist.lastName || ""}`.trim() || artist.pseudo,
       slug: artist.slug,
-      bio: null,
+      bio: artist.shortDescription ?? null,
+      description: artist.description ?? null,
+      formation: artist.formation ?? null,
+      personalExhibitions: artist.personalExhibitions ?? null,
+      collectiveExhibitions: artist.collectiveExhibitions ?? null,
+      publicCollections: artist.publicCollections ?? null,
       imageUrl: artist.imageUrl,
       artworks: artist.artworks.map((artwork) => ({
         id: artwork.id,

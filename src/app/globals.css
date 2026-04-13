@@ -8,6 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: #c8a96e;
   --font-sans: var(--font-montserrat), sans-serif;
   --font-serif: var(--font-playfair), serif;
 }
@@ -83,4 +84,128 @@ body {
 
 .expo-overlay {
   background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+}
+
+/* Artist bio — inner HTML typography for sanitized database content */
+.artist-html-content {
+  font-family: var(--font-playfair), serif;
+  color: rgba(26, 26, 26, 0.80);
+  line-height: 1.85;
+}
+
+.artist-html-content p {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  margin-bottom: 1.25rem;
+}
+
+.artist-html-content p:last-child {
+  margin-bottom: 0;
+}
+
+.artist-html-content ul,
+.artist-html-content ol {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.artist-html-content li {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(26, 26, 26, 0.75);
+  padding-left: 1rem;
+  border-left: 1px solid rgba(26, 26, 26, 0.10);
+  margin-bottom: 0.5rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.artist-html-content li:hover {
+  border-left-color: #c8a96e;
+  color: #1a1a1a;
+}
+
+.artist-html-content strong,
+.artist-html-content b {
+  font-weight: 600;
+  color: #c8a96e;
+}
+
+.artist-html-content em,
+.artist-html-content i {
+  font-style: italic;
+  color: rgba(26, 26, 26, 0.65);
+}
+
+.artist-html-content a {
+  color: #c8a96e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.artist-html-content a:hover {
+  opacity: 0.75;
+}
+
+/* Artist bio — dark panel variant (slide-in overlay on #0e0e0e background) */
+.artist-html-content-dark {
+  font-family: var(--font-playfair), serif;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.85;
+}
+
+.artist-html-content-dark p {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  margin-bottom: 1.25rem;
+}
+
+.artist-html-content-dark p:last-child {
+  margin-bottom: 0;
+}
+
+.artist-html-content-dark ul,
+.artist-html-content-dark ol {
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.artist-html-content-dark li {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.60);
+  padding-left: 1rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 0.5rem;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.artist-html-content-dark li:hover {
+  border-left-color: #c8a96e;
+  color: rgba(255, 255, 255, 0.90);
+}
+
+.artist-html-content-dark strong,
+.artist-html-content-dark b {
+  font-weight: 600;
+  color: #c8a96e;
+}
+
+.artist-html-content-dark em,
+.artist-html-content-dark i {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.artist-html-content-dark a {
+  color: #c8a96e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s ease;
+}
+
+.artist-html-content-dark a:hover {
+  opacity: 0.75;
 }

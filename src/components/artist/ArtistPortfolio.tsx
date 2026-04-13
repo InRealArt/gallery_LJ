@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CLOUDFLARE_R2_PUBLIC_URL } from "@/constants/cloudflare";
@@ -18,10 +19,11 @@ interface Artwork {
 
 interface ArtistPortfolioProps {
   artistName: string;
+  artistSlug: string;
   artworks: Artwork[];
 }
 
-export default function ArtistPortfolio({ artistName, artworks }: ArtistPortfolioProps) {
+export default function ArtistPortfolio({ artistName, artistSlug, artworks }: ArtistPortfolioProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const artworksRef = useRef<(HTMLElement | null)[]>([]);
 
@@ -101,43 +103,45 @@ export default function ArtistPortfolio({ artistName, artworks }: ArtistPortfoli
                 className="group cursor-pointer"
                 style={{ willChange: "transform, opacity" }}
               >
-                <figure className="m-0">
-                  {/* Image — compact square-ish format */}
-                  <div
-                    className="overflow-hidden mb-4"
-                    style={{ aspectRatio: "3/4" }}
-                  >
-                    <img
-                      src={`${CLOUDFLARE_R2_PUBLIC_URL}${artwork.imageUrl}`}
-                      alt={artwork.name}
-                      className="w-full h-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
+                <Link href={`/artistes/${artistSlug}/artworks/${artwork.id}`}>
+                  <figure className="m-0">
+                    {/* Image — compact square-ish format */}
+                    <div
+                      className="overflow-hidden mb-4"
+                      style={{ aspectRatio: "3/4" }}
+                    >
+                      <img
+                        src={`${CLOUDFLARE_R2_PUBLIC_URL}${artwork.imageUrl}`}
+                        alt={artwork.name}
+                        className="w-full h-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
 
-                  {/* Caption */}
-                  <figcaption className="px-1">
-                    <h3 className="text-sm font-serif text-white/90 mb-1 leading-snug">
-                      {artwork.name}
-                    </h3>
-                    {artwork.dimensions && (
-                      <p className="text-[10px] text-white/35 uppercase tracking-[0.18em] mb-1">
-                        {artwork.dimensions}
-                      </p>
-                    )}
-                    {artwork.creationYear && (
-                      <p className="text-[10px] text-white/30">{artwork.creationYear}</p>
-                    )}
-                    {artwork.price && (
-                      <p className="text-xs font-medium mt-2 text-white/55">
-                        {new Intl.NumberFormat("fr-FR", {
-                          style: "currency",
-                          currency: "EUR",
-                        }).format(artwork.price)}
-                      </p>
-                    )}
-                  </figcaption>
-                </figure>
+                    {/* Caption */}
+                    <figcaption className="px-1">
+                      <h3 className="text-sm font-serif text-white/90 mb-1 leading-snug">
+                        {artwork.name}
+                      </h3>
+                      {artwork.dimensions && (
+                        <p className="text-[10px] text-white/35 uppercase tracking-[0.18em] mb-1">
+                          {artwork.dimensions}
+                        </p>
+                      )}
+                      {artwork.creationYear && (
+                        <p className="text-[10px] text-white/30">{artwork.creationYear}</p>
+                      )}
+                      {artwork.price && (
+                        <p className="text-xs font-medium mt-2 text-white/55">
+                          {new Intl.NumberFormat("fr-FR", {
+                            style: "currency",
+                            currency: "EUR",
+                          }).format(artwork.price)}
+                        </p>
+                      )}
+                    </figcaption>
+                  </figure>
+                </Link>
               </article>
             ))}
           </div>

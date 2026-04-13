@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useState } from "react";
 
 const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  if (window.location.pathname !== "/") return;
+
   e.preventDefault();
-  const targetId = href.replace("#", "");
+  const targetId = href.replace("/#", "");
   const targetElement = document.getElementById(targetId);
-  
+
   if (targetElement) {
     const headerOffset = 112; // Header height (28 * 4 = 112px)
     const elementPosition = targetElement.getBoundingClientRect().top;
@@ -28,13 +30,13 @@ export default function Header() {
       <div className="max-w-[1600px] mx-auto px-10 h-28 flex justify-between items-center">
         {/* Left Navigation */}
         <nav className="hidden lg:flex space-x-10">
-          <a href="#expositions" className="nav-item" onClick={(e) => handleSmoothScroll(e, "#expositions")}>
+          <a href="/#expositions" className="nav-item" onClick={(e) => handleSmoothScroll(e, "/#expositions")}>
             Expositions
           </a>
-          <a href="#artistes" className="nav-item" onClick={(e) => handleSmoothScroll(e, "#artistes")}>
+          <a href="/#artistes" className="nav-item" onClick={(e) => handleSmoothScroll(e, "/#artistes")}>
             Artistes
           </a>
-          <a href="#histoire" className="nav-item" onClick={(e) => handleSmoothScroll(e, "#histoire")}>
+          <a href="/#histoire" className="nav-item" onClick={(e) => handleSmoothScroll(e, "/#histoire")}>
             L&apos;Histoire
           </a>
         </nav>
@@ -51,10 +53,10 @@ export default function Header() {
 
         {/* Right Navigation */}
         <nav className="hidden lg:flex space-x-10 items-center">
-          <a href="#catalogues" className="nav-item" onClick={(e) => handleSmoothScroll(e, "#catalogues")}>
+          <a href="/#catalogues" className="nav-item" onClick={(e) => handleSmoothScroll(e, "/#catalogues")}>
             Catalogues
           </a>
-          <a href="#contact" className="nav-item" onClick={(e) => handleSmoothScroll(e, "#contact")}>
+          <a href="/#contact" className="nav-item" onClick={(e) => handleSmoothScroll(e, "/#contact")}>
             Contact
           </a>
           {/* <div className="flex space-x-3 ml-4">
@@ -88,19 +90,19 @@ export default function Header() {
       {mobileOpen && (
         <div className="lg:hidden bg-white border-t border-gray-100 py-8 px-10">
           <nav className="flex flex-col space-y-6">
-            <a href="#expositions" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "#expositions"); setMobileOpen(false); }}>
+            <a href="/#expositions" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "/#expositions"); setMobileOpen(false); }}>
               Expositions
             </a>
-            <a href="#artistes" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "#artistes"); setMobileOpen(false); }}>
+            <a href="/#artistes" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "/#artistes"); setMobileOpen(false); }}>
               Artistes
             </a>
-            <a href="#histoire" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "#histoire"); setMobileOpen(false); }}>
+            <a href="/#histoire" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "/#histoire"); setMobileOpen(false); }}>
               L&apos;Histoire
             </a>
-            <a href="#catalogues" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "#catalogues"); setMobileOpen(false); }}>
+            <a href="/#catalogues" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "/#catalogues"); setMobileOpen(false); }}>
               Catalogues
             </a>
-            <a href="#contact" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "#contact"); setMobileOpen(false); }}>
+            <a href="/#contact" className="nav-item" onClick={(e) => { handleSmoothScroll(e, "/#contact"); setMobileOpen(false); }}>
               Contact
             </a>
             <div className="flex space-x-3 pt-2">

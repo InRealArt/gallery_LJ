@@ -84,7 +84,7 @@ export default function ArtistPage({
         />
 
         {/* ── Portfolio Section ── */}
-        <ArtistPortfolio artistName={artist.name} artworks={artist.artworks} />
+        <ArtistPortfolio artistName={artist.name} artistSlug={artist.slug} artworks={artist.artworks} />
 
         {/* ── Back to Artists CTA ── */}
         <section className="py-20 bg-[#0e0e0e]">

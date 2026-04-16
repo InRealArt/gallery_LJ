@@ -40,7 +40,7 @@ export async function getArtworkByArtistSlugAndId(
         visible: true,
         artist: {
           slug: artistSlug,
-          visible: true,
+          permanent: true,
         },
       },
       include: {

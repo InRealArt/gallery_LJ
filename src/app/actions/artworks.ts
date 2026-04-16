@@ -17,7 +17,7 @@ export async function getArtworks(): Promise<ArtworkData[]> {
       where: {
         visible: true,
         artist: {
-          visible: true,
+          permanent: true,
         },
       },
       include: {

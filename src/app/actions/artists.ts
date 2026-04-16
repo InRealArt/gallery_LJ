@@ -15,7 +15,7 @@ export async function getArtists(): Promise<ArtistData[]> {
   try {
     const artists = await prisma.galleryLjArtist.findMany({
       where: {
-        visible: true,
+        permanent: true,
       },
       include: {
         _count: {

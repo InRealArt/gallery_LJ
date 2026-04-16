@@ -13,7 +13,7 @@
     "update:schema:inrealart": "sh -c 'GITHUB_TOKEN=$(grep ^GITHUB_TOKEN= .env | cut -d= -f2) pnpm update @InRealArt/prisma-schema --latest && cp node_modules/@InRealArt/prisma-schema/schema.prisma prisma/schema.prisma && GITHUB_TOKEN=$(grep ^GITHUB_TOKEN= .env | cut -d= -f2) pnpm exec prisma generate'"
   },
   "dependencies": {
-    "@InRealArt/prisma-schema": "^1.3.7",
+    "@InRealArt/prisma-schema": "^1.3.11",
     "@prisma/adapter-neon": "^7.4.1",
     "@prisma/adapter-pg": "^7.4.1",
     "@prisma/client": "^7.4.1",

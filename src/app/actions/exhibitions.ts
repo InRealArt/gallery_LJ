@@ -15,7 +15,7 @@ export interface ExhibitionData {
 
 export async function getExhibitions(): Promise<ExhibitionData[]> {
   try {
-    const exhibitions = await prisma.galleryLjExhibition.findMany({
+    const exhibitions = await prisma.galleryLjEvent.findMany({
       where: {
         visible: true,
       },

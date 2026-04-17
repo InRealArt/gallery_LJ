@@ -75,9 +75,9 @@ export default async function ArtistesSection() {
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-serif mb-1">{artiste.name}</h3>
-                  <p className="text-[11px] text-gray-400 uppercase tracking-[0.2em]">
+                  {/* <p className="text-[11px] text-gray-400 uppercase tracking-[0.2em]">
                     {artiste.specialty}
-                  </p>
+                  </p> */}
                 </div>
               </Link>
             </div>

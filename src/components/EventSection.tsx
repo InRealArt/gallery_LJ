@@ -1,20 +1,26 @@
+import Link from "next/link";
 import { getExhibitions } from "@/app/actions/exhibitions";
-import ExpositionsSectionAnimated from "./ExpositionsSectionAnimated";
+import ExpositionsSectionAnimated from "./EventSectionAnimated";
+import { EventTypeBadge } from "./event/EventTypeBadge";
 
 const defaultExpositions = [
   {
     title: "L'Éveil des Sens",
+    slug: null as string | null,
     location: "En ce moment — Paris",
     cta: "Explorer",
     image:
       "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=2000&auto=format&fit=crop",
+    eventType: "exhibition" as const,
   },
   {
     title: "Formes & Silences",
+    slug: null as string | null,
     location: "À venir — Monaco",
     cta: "En savoir plus",
     image:
       "https://images.unsplash.com/photo-1549490349-8643362247b5?q=80&w=2000&auto=format&fit=crop",
+    eventType: "exhibition" as const,
   },
 ];
 
@@ -31,9 +37,11 @@ export default async function ExpositionsSection() {
   const displayItems = hasExhibitions
     ? exhibitions.map((expo) => ({
         title: expo.title,
+        slug: expo.slug,
         location: getLocationDisplay(expo.location),
-        cta: expo.startDate ? "Réserver" : "En savoir plus",
+        cta: "En savoir plus",
         image: expo.imageUrl || defaultExpositions[0].image,
+        eventType: expo.eventType,
       }))
     : defaultExpositions;
 
@@ -48,21 +56,21 @@ export default async function ExpositionsSection() {
                 Agenda Culturel
               </h2>
               <h2 className="text-4xl md:text-5xl font-serif">
-                Nos Expositions
+                Nos Evènements
               </h2>
             </div>
-            <a
+            {/* <a
               href="#"
               className="expo-header-right text-[11px] uppercase tracking-widest border-b border-black pb-1 hover:opacity-50 transition-all"
             >
               Voir tout l&apos;agenda
-            </a>
+            </a> */}
           </div>
 
           {/* Expo Grid */}
           <div className="expo-grid grid grid-cols-1 md:grid-cols-2 gap-10">
-            {displayItems.map((expo) => (
-              <div key={expo.title} className="expo-card-wrapper">
+            {displayItems.map((expo) => {
+              const inner = (
                 <div
                   className="expo-card group cursor-pointer relative"
                   style={{ aspectRatio: "16/10" }}
@@ -72,6 +80,9 @@ export default async function ExpositionsSection() {
                     alt={expo.title}
                     className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                   />
+                  <div className="absolute top-6 left-6 z-10">
+                    <EventTypeBadge type={expo.eventType} />
+                  </div>
                   <div className="expo-overlay absolute inset-0 flex flex-col justify-end p-10 text-white">
                     <p className="text-[10px] uppercase tracking-[0.3em] mb-2 opacity-80">
                       {expo.location}
@@ -82,8 +93,24 @@ export default async function ExpositionsSection() {
                     </p>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+
+              return (
+                <div key={expo.title} className="expo-card-wrapper">
+                  {expo.slug ? (
+                    <Link
+                      href={`/event/${expo.slug}`}
+                      className="block"
+                      aria-label={`Voir l'événement : ${expo.title}`}
+                    >
+                      {inner}
+                    </Link>
+                  ) : (
+                    inner
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </ExpositionsSectionAnimated>

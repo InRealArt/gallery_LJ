@@ -31,7 +31,7 @@ export default function Header() {
         {/* Left Navigation */}
         <nav className="hidden lg:flex space-x-10">
           <a href="/#expositions" className="nav-item" onClick={(e) => handleSmoothScroll(e, "/#expositions")}>
-            Expositions
+            Evènements
           </a>
           <a href="/#artistes" className="nav-item" onClick={(e) => handleSmoothScroll(e, "/#artistes")}>
             Artistes

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@InRealArt/prisma-schema':
-        specifier: ^1.3.11
-        version: 1.3.11
+        specifier: ^1.3.12
+        version: 1.3.12
       '@prisma/adapter-neon':
         specifier: ^7.4.1
         version: 7.7.0
@@ -72,8 +72,8 @@ importers:
 
 packages:
 
-  '@InRealArt/prisma-schema@1.3.11':
-    resolution: {integrity: sha512-Nf5+8h4zwdCagqYFFC1PJcL8lQhFa9qRw0Pppx/Hd9RiuwTR3+daW24BG2Wfiw3RBx3sajQI2XtfprxEIIwdSA==, tarball: https://npm.pkg.github.com/download/@InRealArt/prisma-schema/1.3.11/aee044f54dcd77da36303fab621284f469c49e53}
+  '@InRealArt/prisma-schema@1.3.12':
+    resolution: {integrity: sha512-xQtEVhbmhEjyUK9PS3Yzs1iJDeTNtyrM+/p4fu0fCHE+ZKZGl4I+bx+/rDHCKvk8pnNqb1UmjGXaNkad8lWRJQ==, tarball: https://npm.pkg.github.com/download/@InRealArt/prisma-schema/1.3.12/e61cbc660f05d8f86bf071b3d9719b66edff8fe7}
 
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
@@ -2471,7 +2471,7 @@ packages:
 
 snapshots:
 
-  '@InRealArt/prisma-schema@1.3.11': {}
+  '@InRealArt/prisma-schema@1.3.12': {}
 
   '@alloc/quick-lru@5.2.0': {}
 

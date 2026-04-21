@@ -31,7 +31,6 @@ export async function getArtists(): Promise<ArtistData[]> {
       orderBy: {
         createdAt: "desc",
       },
-      take: 9,
     });
 
     return artists

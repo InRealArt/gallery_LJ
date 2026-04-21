@@ -27,21 +27,6 @@ export default function ArtistesSectionAnimated({
         },
       });
 
-      // Cards en cascade avec décalage vertical (effet masonry animé)
-      gsap.from(".artiste-card", {
-        opacity: 0,
-        y: 60,
-        duration: 1.1,
-        stagger: {
-          each: 0.18,
-          from: "start",
-        },
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".artistes-grid",
-          start: "top 78%",
-        },
-      });
     }, ref);
 
     return () => ctx.revert();

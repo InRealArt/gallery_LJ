@@ -1,4 +1,18 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.ljgallery.com";
+"use client";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://www.ljgallery.com");
+
+function scrollToAnchor(e: React.MouseEvent<HTMLAnchorElement>, anchor: string) {
+  e.preventDefault();
+  const el = document.getElementById(anchor);
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
 
 export default function Footer() {
   return (
@@ -32,6 +46,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`${SITE_URL}/#expositions`}
+                  onClick={(e) => scrollToAnchor(e, "expositions")}
                   className="hover:text-black transition-colors"
                 >
                   Expositions
@@ -40,6 +55,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`${SITE_URL}/#artistes`}
+                  onClick={(e) => scrollToAnchor(e, "artistes")}
                   className="hover:text-black transition-colors"
                 >
                   Artistes
@@ -53,6 +69,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`${SITE_URL}/#histoire`}
+                  onClick={(e) => scrollToAnchor(e, "histoire")}
                   className="hover:text-black transition-colors"
                 >
                   L&apos;Histoire

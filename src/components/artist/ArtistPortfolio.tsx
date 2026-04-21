@@ -72,8 +72,6 @@ export default function ArtistPortfolio({ artistName, artistSlug, artworks }: Ar
     return () => ctx.revert();
   }, []);
 
-  const lastName = artistName.split(" ").pop() ?? artistName;
-
   return (
     <section
       ref={sectionRef}
@@ -88,7 +86,7 @@ export default function ArtistPortfolio({ artistName, artistSlug, artworks }: Ar
             Portfolio
           </p>
           <h2 className="text-3xl md:text-4xl font-serif text-white">
-            Œuvres de {lastName}
+            Œuvres de {artistName}
           </h2>
         </div>
 

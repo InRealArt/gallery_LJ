@@ -1,20 +1,29 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
+
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
     : "https://www.ljgallery.com");
 
-function scrollToAnchor(e: React.MouseEvent<HTMLAnchorElement>, anchor: string) {
-  e.preventDefault();
-  const el = document.getElementById(anchor);
-  if (el) {
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-}
-
 export default function Footer() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  function scrollToAnchor(e: React.MouseEvent<HTMLAnchorElement>, anchor: string) {
+    e.preventDefault();
+    if (pathname === "/") {
+      const el = document.getElementById(anchor);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      router.push(`/#${anchor}`);
+    }
+  }
+
   return (
     <footer
       id="contact"

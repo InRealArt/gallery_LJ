@@ -93,11 +93,6 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
       }).format(artwork.price)
     : null;
 
-  const artistLastName =
-    artwork.artist.name.split(" ").length > 1
-      ? artwork.artist.name.split(" ").slice(1).join(" ")
-      : artwork.artist.name;
-
   return (
     <div ref={pageRef} className="min-h-screen bg-background">
       {/* ── Breadcrumb ── */}
@@ -339,7 +334,7 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
                   href={`/artistes/${artwork.artist.slug}`}
                   className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 border-b border-foreground/20 pb-0.5 hover:text-accent hover:border-accent transition-all duration-300"
                 >
-                  Voir le portfolio de {artistLastName}
+                  Voir le portfolio de {artwork.artist.name}
                 </Link>
               </div>
             )}
@@ -362,7 +357,7 @@ export default function ArtworkDetail({ artwork }: ArtworkDetailProps) {
                   Du même artiste
                 </p>
                 <h2 className="font-serif text-foreground" style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}>
-                  Autres œuvres de {artistLastName}
+                  Autres œuvres de {artwork.artist.name}
                 </h2>
               </div>
               <Link
